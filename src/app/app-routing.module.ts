@@ -10,12 +10,16 @@ const routes: Routes = [
   {
     path:'login',
     component:LoginComponent,
+    canActivate:[loginGuard]
 
+    
   },
 
   {
     path:'register',
     component:RegisterComponent,
+    canActivate:[loginGuard]
+    
 
   },
 

@@ -42,9 +42,8 @@ export class LoginComponent implements OnInit{
   
       this.userService.login(formData).subscribe({
         next:(data)=>{
-          console.log(data)
-          console.log(data.data)
           this.store.dispatch(saveUserOnStore({user:data.data}))
+          localStorage.setItem('user',JSON.stringify(data.data))
           this.router.navigateByUrl('/home')
         }
       })

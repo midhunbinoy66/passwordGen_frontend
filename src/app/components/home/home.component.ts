@@ -55,5 +55,18 @@ export class HomeComponent implements OnInit {
   }
 
 
+    // Method to copy the password to the clipboard
+    copyToClipboard() {
+      if (navigator.clipboard && window.isSecureContext && this.generatedPassword) {
+        // Use the Clipboard API
+        navigator.clipboard.writeText(this.generatedPassword).then(() => {
+          console.log('Password copied to clipboard');
+          alert('password coppied to clipoboard')
+        }).catch(err => {
+          console.error('Could not copy text: ', err);
+        });
+      } 
+    }
+
 
 }
