@@ -1,0 +1,51 @@
+<app-nav></app-nav>
+
+<div class="max-w-md mx-auto p-6 bg-white shadow-lg rounded-lg">
+  <h2 class="text-2xl font-bold mb-4 text-center">Password Generator</h2>
+  
+  <div class="mb-4">
+    <label class="block text-gray-700 font-semibold mb-2">
+      Length: {{ length }}
+    </label>
+    <input type="range" min="4" max="32" [(ngModel)]="length" class="w-full">
+  </div>
+  
+  <div class="mb-4">
+    <label class="block text-gray-700 font-semibold mb-2">
+      <input type="checkbox" [(ngModel)]="options.upper" class="mr-2">
+      Include Uppercase
+    </label>
+    <label class="block text-gray-700 font-semibold mb-2">
+      <input type="checkbox" [(ngModel)]="options.lower" class="mr-2">
+      Include Lowercase
+    </label>
+    <label class="block text-gray-700 font-semibold mb-2">
+      <input type="checkbox" [(ngModel)]="options.number" class="mr-2">
+      Include Numbers
+    </label>
+    <label class="block text-gray-700 font-semibold mb-2">
+      <input type="checkbox" [(ngModel)]="options.symbol" class="mr-2">
+      Include Symbols
+    </label>
+  </div>
+  
+  <div class="text-center mb-4">
+    <button (click)="generatePassword()" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+      Generate Password
+    </button>
+  </div>
+
+  <div *ngIf="generatedPassword" class="mb-4">
+    <p class="bg-gray-100 p-3 rounded border border-gray-300 mb-2">Generated Password: {{ generatedPassword }}</p>
+    <div class="text-center">
+      <button (click)="savePassword()" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">
+        Save Password
+      </button>
+    </div>
+  </div>
+
+  <h3 class="text-xl font-bold mt-6 mb-4 text-center">Saved Passwords</h3>
+  <ul class="list-disc list-inside bg-gray-100 p-4 rounded border border-gray-300">
+    <li *ngFor="let pwd of user?.storage">{{ pwd }}</li>
+  </ul>
+</div>
